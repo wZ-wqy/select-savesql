@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+　　<head>
+　　　　<meta charset="utf-8" />
+　　　　<title></title>
+　　　　<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
+　　　　<script type="text/javascript">
+　　　　var index;
+		var xmlhttp;
+		if (window.XMLHttpRequest){//IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{// IE6, IE5
+			   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+　　　　$(function(){
+　　　　　　$("input[name='all']").attr("checked",true);
+　　　　　　var all=$("input[name='sample-checkbox']").attr("checked",true);
+　　　　})
+
+　　　　function checkAll(){
+　　　　　　var evt=getEvent();
+　　　　　　var e=evt.srcElement || evt.target;
+
+　　　　　　if(e.checked){
+　　　　　　　　var all=$("input[name='sample-checkbox']").attr("checked",true);
+　　　　　　}else{
+　　　　　　　　var all=$("input[name='sample-checkbox']").attr("checked",false);
+　　　　　　}
+　　　　　　getId();
+　　　　}
+
+　　　　function checkItem(){	
+　　　　　　getId();
+　　　　}
+
+　　　　function getId(){
+　　　　　　arr=new Array();
+　　　　　　var item=document.getElementsByName("sample-checkbox");
+
+　　　　for(i=0;i<item.length;i++){
+　　　　　　if(item[i].checked)
+　　　　　　arr.push(item[i].id)
+　　　　}
+
+　　　　alert(arr);
+		var res = JSON.stringify(arr);
+		console.log(res)
+$.post({
+			url:'//192.168.1.105:8080/controller/TestServlet',
+			cache : false,
+			data : res,
+			type : 'post',
+			dataType: 'json',
+			success : function(data) {  
+				<!-- document.getElementById("tbVOrg.orgParName").value = data.orgName;   -->
+    }  	
+});
+<!-- 　　　　$.post('TestServlet.java',{ //地址 -->
+<!-- 　　　　　　arr:arr -->
+<!-- 　　　　},function(data){ -->
+<!-- 　　　　　　alert(data); -->
+<!-- 　　　　}); -->
+　　}
+　　//IE浏览器支持window.event.srcElement,而firefox支持window.event.target；
+　　function getEvent()
+　　{
+　　　　if(document.all)
+　　　　{
+　　　　　　return window.event;//如果是ie
+　　　　}
+　　func=getEvent.caller;
+　　while(func!=null)
+　　{
+　　　　var arg0=func.arguments[0];
+　　　　if(arg0)
+　　　　{
+　　　　　　if((arg0.constructor==Event || arg0.constructor ==MouseEvent)
+　　　　　　||(typeof(arg0)=="object" && arg0.preventDefault && arg0.stopPropagation))
+　　　　　　{
+　　　　　　　　return arg0;
+　　　　　　}
+　　　　}
+　　　　func=func.caller;
+　　}
+　　return null;
+} 
+	
+
+
+		</script>
+		
+		<body>
+
+				
+			    <label><input name="sample-checkbox" id="acceptTime" value="1" type="checkbox"   /> 接受工单时间</label>
+				<label><input name="sample-checkbox" id="allotTime" value="1" type="checkbox" /> 指派时间</label>
+				<label><input name="sample-checkbox" id="attribute" value="1" type="checkbox"   /> 属性</label>
+				<label><input name="sample-checkbox" id="field_mw14ov4M09NQ6mFu" value="1" type="checkbox" /> 即时联系人</label>
+				<label><input name="sample-checkbox" id="field_vahTMFEJgz4riJy5" value="1" type="checkbox"   /> 故障描述</label>
+				<label><input name="sample-checkbox" id="field_BKzX3eYzndTcLhkK" value="1" type="checkbox" /> 满意度</label>
+				<label><input name="sample-checkbox" id="field_1aKmjxaXXlEAHLeP" value="1" type="checkbox"   /> 产品编号</label>
+				<label><input name="sample-checkbox" id="field_TTb1jR2CzHrKpBCM" value="1" type="checkbox" /> 处理方式</label>
+				<label><input name="sample-checkbox" id="field_pTlybqN5Lf1n14OJ" value="1" type="checkbox"   /> 注意事项</label>
+				<label><input name="sample-checkbox" id="field_ucUWJ2GBCTw2sEzu" value="1" type="checkbox" /> 客户专员</label>
+				<label><input name="sample-checkbox" id="field_id0AudS1SKPyqb6H" value="1" type="checkbox"   /> 客户办公室</label>
+				<label><input name="sample-checkbox" id="field_Hb9yHzXFuSRwAD0p" value="1" type="checkbox" /> 即时联系电话</label>
+				<label><input name="sample-checkbox" id="field_OUmy82mWlKmk8Oac" value="1" type="checkbox"   /> 回执信息备注</label>
+				<label><input name="sample-checkbox" id="field_C5uxACkZr6spdqQ5" value="1" type="checkbox" /> 回执信息部门</label>
+				<label><input name="sample-checkbox" id="field_5Rk0VwrhvpowVZ2c" value="1" type="checkbox"   /> 产品类型</label>
+				<label><input name="sample-checkbox" id="field_Kp3R9ntn6wD0YFsS" value="1" type="checkbox" /> 意见建议</label>
+				<label><input name="sample-checkbox" id="field_SrBt93INUCMXdOnp" value="1" type="checkbox"   /> 产品品牌</label>
+				<label><input name="sample-checkbox" id="field_3AKvuOidKGMs8rYa" value="1" type="checkbox" /> 故障处理结论</label>
+				<label><input name="sample-checkbox" id="paymentMethod" value="1" type="checkbox"   /> 付款方式</label>
+				<label><input name="sample-checkbox" id="field_xycfmIsIi7BhT4Gs" value="1" type="checkbox" /> 销售单号</label>
+				<label><input name="sample-checkbox" id="field_0J2DCtsLEtZ0cjZq" value="1" type="checkbox"   /> 返修设备配件</label>
+				<label><input name="sample-checkbox" id="field_uYbYVezdQ23Fjzis" value="1" type="checkbox" /> 服务人员</label>
+			 	<label><input name="sample-checkbox" id="field_h36G3FuKVEHsGp1W" value="1" type="checkbox"   /> 客户部门</label>
+				<label><input name="sample-checkbox" id="field_iPflqZaaUHXMhN3j" value="1" type="checkbox" /> 暂停其他原因</label>
+				<label><input name="sample-checkbox" id="field_mdMsQ4wPHGgf1MCk" value="1" type="checkbox"   /> 暂停原因</label>
+				<label><input name="sample-checkbox" id="field_slkS2xmmH5nEkQ30" value="1" type="checkbox" /> 产品型号</label>
+				<label><input name="sample-checkbox" id="completeTime" value="1" type="checkbox"   /> 完成时间</label>
+				<label><input name="sample-checkbox" id="createTime" value="1" type="checkbox" /> 创建时间</label>
+				<label><input name="sample-checkbox" id="createUserName" value="1" type="checkbox"   /> 创建人</label>
+				<label><input name="sample-checkbox" id="cusAddress" value="1" type="checkbox" /> 地址</label>
+				<label><input name="sample-checkbox" id="cusName" value="1" type="checkbox"   /> 客户名称</label>
+				<label><input name="sample-checkbox" id="cusNo" value="1" type="checkbox" /> 客户编号</label>
+				<label><input name="sample-checkbox" id="executorName" value="1" type="checkbox"   /> 负责人</label>
+				<label><input name="sample-checkbox" id="level" value="1" type="checkbox" /> 优先级</label>
+				<label><input name="sample-checkbox" id="lmName" value="1" type="checkbox"   /> 客户联系人</label>
+				<label><input name="sample-checkbox" id="lmPhone" value="1" type="checkbox" /> 客户联系电话</label>
+				<label><input name="sample-checkbox" id="planTime" value="1" type="checkbox"   /> 计划时间</label>
+				<label><input name="sample-checkbox" id="productIds" value="1" type="checkbox" /> 产品</label>
+				<label><input name="sample-checkbox" id="serviceContent" value="1" type="checkbox"   /> 服务内容</label>
+				<label><input name="sample-checkbox" id="startTime" value="1" type="checkbox" /> 开始时间</label>
+				<label><input name="sample-checkbox" id="state" value="1" type="checkbox"   /> 工单状态</label>
+				<label><input name="sample-checkbox" id="synergyNames" value="1" type="checkbox" /> 协同人</label>
+				<label><input name="sample-checkbox" id="taskNo" value="1" type="checkbox"   /> 工单编号</label>
+				<label><input name="sample-checkbox" id="updateTime" value="1" type="checkbox"   /> 结算审批时间</label>
+				<label><input name="all" type="button" id="all" value="提交" onclick="checkAll()"/></label>
+			
+		 </div>
+        </dd>
+    </dl>
+
+	</body>
+	</div>
+ </head>
+ </html>

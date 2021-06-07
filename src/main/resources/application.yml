@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shouhoubao?autoReconnect=true
+    hikari:
+      username: root
+      password: Pf4tXh8JaBNPmJxS
+      # >= 6.x: com.mysql.cj.jdbc.Driver
+      # <= 5.x: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#  cloud:
+#    nacos:
+#      discovery:
+#        # 指定nacos server的地址
+#        server-addr: localhost:8848
+#        # 指定namespace
+##        namespace: d93d4b4e-0717-4851-a103-4a661eabb385
+#      # 指定集群名称
+#        #柳州机房
+#        cluster-name: LZ
+#        #来宾机房
+#        #cluster-name: LB
+#
+#  #   元数据定义，主要解决版本问题和对应版本调用
+##  metadata:
+##    instance: c
+##    haha: hehe
+##    version: v1
+#  application:
+#    # 服务名称尽量用-，不要用_，不要用特殊字符
+#    name: user-zhoujun
+##server:
+##  port: 8081
+#server:
+  port: 8082
